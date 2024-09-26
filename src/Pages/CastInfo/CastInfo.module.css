@@ -1,0 +1,187 @@
+.cast{
+    padding: 180px 0 0px;
+    background: url('../../Images/hero-bg.jpg');
+
+    background-position: center;
+    background-size: cover;
+
+    position: relative;
+    color: #fff;
+
+}
+.cast:after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+.cast .cast_image img{
+    display: block;
+    min-width: 300px;
+    width: 300px;
+    height: 450px;
+    position: relative;
+    top: 0;
+    left: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.cast .cast_info h2{
+    font-size: 2.2rem; 
+    margin-bottom: 30px;
+    text-transform: capitalize;
+}
+.cast .cast_info h3{
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-transform: none;
+}
+.cast .cast_info p{
+    padding-bottom: 20px;
+    line-height: 18px;
+    letter-spacing: 1px;
+    position: relative;
+    color: #Abb7C4;
+}
+.cast .cast_info p span{
+    display: block;
+    margin-bottom: 30px;
+}
+.personal{
+    padding: 120px 0 100px;
+    background: #06121e;
+    color: #Abb7C4;
+
+
+}
+.personal .text{
+    margin: 0 0 20px;
+    font-size: 15px ;
+}
+.personal .text strong{
+    display: block;
+    font-weight: 600;
+    font-size: 18px ;
+}
+
+
+.overLay {
+    position: absolute;
+    top: 15px;
+    right: -45px;
+    color: antiquewhite;
+    text-transform: uppercase;
+    transform: rotate(45deg);
+    background: #f5b50a;
+    padding: 0 50px;
+    font-size: 17px;
+}
+
+.orange {
+    background: #ec5a1a;
+}
+
+.slide:hover .overLay h4 {
+    color: #dcf836;
+
+}
+
+.slide .overLayBtn {
+    background: #00000085;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all .3s;
+    border-radius: 20px;
+
+}
+
+.slide .overLayBtn .btn {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #dd003f;
+    padding: 8px 15px;
+    width: 110px;
+    height: 38px;
+    text-align: center;
+    border-radius: 30px;
+    cursor: pointer;
+    /* opacity: 0; */
+
+}
+.slide img{
+    border-radius: 20px;
+}
+
+.slide:hover .overLayBtn {
+    opacity: 1;
+}
+
+.slide .overLayBtn .btn a {
+    font-size: 14px;
+    color: #abb7c4;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.slide:hover .overLay h4 {
+    transition: all .5s;
+}
+.cast_movies .char {
+ padding: 15px 0;
+  font-size: 15px;
+}
+.cast_movies .char h5 a{
+    font-size: 16px;
+    color: #ec5a1a;
+    text-decoration: none;
+    transition: all .5s;
+}
+.cast_movies .char h5 a:hover{
+    color: #fff;
+    text-decoration: underline;
+}
+.cast_movies .char p{
+    font-size: 14px;
+    color: #abb7c4;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.teater_list {
+    margin-bottom: 30px;
+}
+
+.teater_list li {
+    margin-right: 20px;
+    font-size: 16px;
+    color: #abb7c4;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all .5s;
+    cursor: pointer;
+
+}
+
+.teater_list li:hover {
+    color: #dcf836;
+}
+

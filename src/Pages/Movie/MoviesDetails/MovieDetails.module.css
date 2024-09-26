@@ -1,0 +1,270 @@
+.main_sec {
+    
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center;
+    padding: 180px 0 0px;
+    position: relative;
+    background-color: #020d18 !important;
+
+}
+
+.main_div {
+    position: relative;
+    z-index: 2;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.main_div .image img {
+    border-width: 0;
+    min-width: 300px;
+    width: 300px;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-inline-start: auto;
+    margin-inline-end: 15px;
+
+}
+
+.main_sec .content {
+    color: #fff;
+}
+
+.main_sec .content h1 {
+
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.main_div .genres_box {
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main_div .genres {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+    padding: 3px 5px;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.main_div .genres:nth-child(1) {
+    background-color: #a6bb16;
+}
+
+.main_div .genres:nth-child(2) {
+    background-color: #ec5a1a;
+}
+
+.main_div .genres:nth-child(3) {
+    background-color: #1692bb;
+}
+
+.main_div .genres:nth-child(4) {
+    background-color: #604CC3;
+}
+
+.main_div .genres:nth-child(5) {
+    background-color: #7EACB5;
+}
+.main_div .genres:nth-child(6) {
+    background-color: #ec5a1a;
+}
+
+.main_div .genres:nth-child(7) {
+    background-color: #1692bb;
+}
+
+
+.main_sec .content p {
+    margin-bottom: 24px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.main_sec .content p span {
+    color: #dcf836;
+    font-size: 1.4rem;
+    padding-bottom: 8px;
+    display: block;
+}
+
+
+.main_sec::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.casts {
+    background-color: #020d18;
+    padding: 75px 0;
+}
+
+.casts .cast_img img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+.casts .cast_item {
+    background: #fff;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.casts .cast_item .cast_info {
+    padding: 3px 0px;
+}
+
+.casts .cast_item .cast_info a {
+    font-size: 1.3rem;
+    transition: all .3s;
+}
+
+.casts .cast_item .cast_info a:hover {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+ .all_cast {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    color: #1692bb;
+    letter-spacing: 1px;
+    font-weight: bold;
+    display: inline-block;
+    text-transform: capitalize;
+
+}
+
+ .all_cast:hover i {
+    transition: all .3s;
+    padding-inline-start: 5px;
+}
+
+ .all_cast:hover i {
+    transform: translateX(10px);
+}
+
+.related_movies {
+    background-color: #06121e;
+    padding: 70px 0;
+}
+
+.overLay {
+    position: absolute;
+    top: 15px;
+    right: -45px;
+    color: antiquewhite;
+    text-transform: uppercase;
+    transform: rotate(45deg);
+    background: #f5b50a;
+    padding: 0 50px;
+    font-size: 17px;
+}
+
+.yellow{
+    background-color: #f5b50a;
+}
+.orange {
+    background: #ec5a1a;
+}
+.green_light{
+    background-color: #a6bb16;
+}
+.gray{
+    background-color: #7EACB5;
+}
+.red{
+    background-color: #ff0000;
+}
+
+.slide:hover .overLay h4 {
+    color: #dcf836;
+
+}
+
+.slide .overLayBtn {
+    background: #00000085;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all .3s;
+
+}
+
+.slide .overLayBtn .btn {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #dd003f;
+    padding: 8px 15px;
+    width: 110px;
+    height: 38px;
+    text-align: center;
+    border-radius: 30px;
+    cursor: pointer;
+    /* opacity: 0; */
+
+}
+
+.slide:hover .overLayBtn {
+    opacity: 1;
+}
+
+.slide .overLayBtn .btn a {
+    font-size: 14px;
+    color: #abb7c4;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.slide:hover .overLay h4 {
+    transition: all .5s;
+}
+
+
+.teater_list {
+    margin-bottom: 30px;
+}
+
+.teater_list li {
+    margin-right: 20px;
+    font-size: 16px;
+    color: #abb7c4;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all .5s;
+    cursor: pointer;
+
+}
+
+.teater_list li:hover {
+    color: #dcf836;
+}
+
+.recomendation{
+    background-color: #020d18;
+}

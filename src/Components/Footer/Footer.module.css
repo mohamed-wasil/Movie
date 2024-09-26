@@ -1,0 +1,48 @@
+.footer {
+    background: url("../../Images/slider-bg.jpg") no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 80px 0;
+}
+
+.footer .logo_ft {
+    margin-bottom: 60px;
+    width: 50%;
+}
+
+.footer p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #abb7c4;
+    font-weight: 300;
+    text-transform: none;
+    line-height: 24px !important;
+}
+
+.footer p span {
+    color: #FFF;
+    border-bottom: 1px solid dotted;
+}
+
+.footer h4 {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-bottom: 30px;
+}
+.footer ul li{
+    margin-bottom: 10px;
+
+}
+.footer ul li a {
+    font-size: 16px;
+    color: #abb7c4;
+    /* font-weight: regular; */
+    text-transform: none;
+    transition: all .3s;
+
+}
+.footer ul li a:hover {
+ color: #dcf836 ;
+}

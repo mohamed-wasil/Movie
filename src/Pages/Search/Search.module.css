@@ -1,0 +1,44 @@
+
+.last_season {
+    background-color: #06121e;
+    padding: 200px 0 70px;
+}
+
+.last_season .season {
+    border: 1px solid #fefefe11;
+    padding: 15px;
+    margin-bottom: 30px;
+    color: #abb7c4;
+    border-radius: 10px;
+}
+.last_season .season img{
+    border-radius: 8px;
+}
+.last_season .season .season_title a {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+    transition: all .5s;
+}
+
+.last_season .season .season_title a:hover {
+    color: #a6bb16;
+}
+
+.last_season .season .season_title span {
+    font-size: 1rem;
+    margin-inline-start: 5px;
+    opacity: .7;
+}
+
+.last_season .season .season_info {
+    display: flex;
+}
+
+.last_season .season .season_info span:first-child {
+    color: #dcf836;
+    margin-inline-end: 10px;
+    margin-bottom: 15px;
+    display: block;
+}

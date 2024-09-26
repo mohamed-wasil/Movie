@@ -1,0 +1,104 @@
+.banner {
+    padding-top: 180px;
+    position: relative;
+    background-position: center center !important;
+    background-size: cover !important;
+
+}
+
+.banner_div {
+    position: relative;
+    z-index: 2;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.banner:after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.858);
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.banner .poster img {
+    border-radius: 5px;
+}
+
+.banner .movie_content {
+    color: aliceblue;
+}
+
+.banner .movie_content .link {
+    transition: all .3s;
+}
+
+.banner .movie_content .link span {
+    opacity: .7;
+}
+
+.banner .movie_content .link:hover {
+    color: #f5b50a;
+}
+
+.banner .movie_content .link i {
+    padding-inline-end: 5px;
+    transition: all .3s;
+}
+
+.banner .movie_content .link:hover i {
+    transform: translateX(-8px);
+}
+
+.column{
+    padding: 60px;
+    background: #06121e;
+    color: #abb7c4;
+}
+.column h3{
+    font-weight: 600;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+.column h3 span{
+    font-weight: 400;
+    font-size:.8em;
+}
+.column .person{
+    padding: 0;
+    list-style: none;
+}
+.column .person li{
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center ;
+
+}
+
+.column .person_image img {
+    min-width: 66px;
+    border-radius: 8px;
+    width: 66px;
+    height: 75px;
+    margin-bottom: 0;
+  
+}
+.column .person_info {
+    margin-left: 15px;
+}
+.column .person_info p{
+    font-weight: 300;
+    font-size: 16px;
+    margin: 0;
+    transition: all .3s;
+}
+.column .person_info p:hover{
+   color: #f5b50a;
+}
+.column .person_info >span {
+    font-size: 13px;
+}

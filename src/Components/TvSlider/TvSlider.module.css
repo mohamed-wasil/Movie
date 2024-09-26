@@ -1,0 +1,102 @@
+.overLay {
+    position: absolute;
+    top: 15px;
+    right: -45px;
+    color: antiquewhite;
+    text-transform: uppercase;
+    transform: rotate(45deg);
+    padding: 0 50px;
+    font-size: 17px;
+}
+
+.yellow{
+    background-color: #f5b50a;
+}
+.orange {
+    background: #ec5a1a;
+}
+.green_light{
+    background-color: #a6bb16;
+}
+.gray{
+    background-color: #7EACB5;
+}
+.red{
+    background-color: #ff0000;
+}
+
+.slide:hover .overLay h4 {
+    color: #dcf836;
+
+}
+
+.slide:hover .overLay h4 {
+    transition: all .5s;
+}
+.slide .overLayBtn {
+    background: #00000085;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all .3s;
+
+}
+
+.slide .overLayBtn .btn {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #dd003f;
+    padding: 8px 15px;
+    width: 110px;
+    height: 38px;
+    text-align: center;
+    border-radius: 30px;
+    cursor: pointer;
+    /* opacity: 0; */
+
+}
+
+.slide:hover .overLayBtn {
+    opacity: 1;
+}
+
+.slide .overLayBtn .btn a {
+    font-size: 14px;
+    color: #abb7c4;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.teater_list {
+    margin-bottom: 30px;
+}
+
+.teater_list li  {
+    margin-right: 20px;
+    font-size: 16px;
+    color: #abb7c4;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all .5s;
+    cursor: pointer;
+
+}
+
+.teater_list li:hover {
+    color: #dcf836;
+}
+.active{
+    color: #dcf836 !important;
+}
+

@@ -1,0 +1,22 @@
+
+.overLay{
+    position: absolute;
+    top: 15px;
+    right: -45px;
+    color: antiquewhite;
+    text-transform: uppercase;
+    transform: rotate(45deg);
+    background: #f5b50a;
+    padding: 0 50px;
+    font-size: 17px;
+}
+.orange{
+    background: #ec5a1a;
+}
+.slide:hover .overLay h4{
+    color: #dcf836;
+
+}
+.slide:hover .overLay h4{
+    transition: all .5s ;
+}

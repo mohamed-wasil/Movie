@@ -1,0 +1,137 @@
+.banner {
+    background: url('../../Images/slider-bg.jpg');
+    padding: 180px 0 100px;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    color: #fff;
+}
+
+.banner::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.438);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.banner .hero {
+    padding-top: 120px;
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.banner .hero h1 {
+    font-size: 36px;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.banner .hero .banner_text {
+    color: #abb7c4;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.banner .hero .banner_text a {
+    color: #4280bf;
+    transition: all .3s;
+}
+
+.banner .hero .banner_text a:hover {
+    opacity: .7;
+}
+
+.banner .hero .banner_text i {
+    margin: 0 12px;
+}
+
+.movie {
+    background: #020d18;
+    padding: 80px 0;
+}
+
+.movie img {
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: block;
+
+}
+
+.slide:hover .overLay h4 {
+    color: #dcf836;
+}
+
+.slide .overLayBtn {
+    background: #00000085;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all .3s;
+}
+
+.slide .overLayBtn .btn {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #dd003f;
+    padding: 8px 15px;
+    width: 110px;
+    height: 38px;
+    text-align: center;
+    border-radius: 30px;
+    cursor: pointer;
+    /* opacity: 0; */
+
+}
+
+.slide:hover .overLayBtn {
+    opacity: 1;
+}
+
+.slide .overLayBtn .btn a {
+    font-size: 14px;
+    color: #abb7c4;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+
+.movie .char h5 a {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all .3s;
+}
+
+.movie .char a:hover {
+    color: #dcf836;
+}
+
+.movie .char p {
+    color: #cecece;
+    font-size: 14px;
+    display: inline-block;
+    margin: 0;
+}
