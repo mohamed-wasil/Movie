@@ -5,6 +5,9 @@ import { Link, useParams } from 'react-router-dom'
 import tvDetailsCSS from './TvDetails.module.css'
 import Slider from 'react-slick'
 import LoadingScreen from '../../../Components/LoadingScreen/LoadingScreen'
+import maleImage from '../../../Images/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg'
+import femaleImage from '../../../Images/glyphicons-basic-36-user-female-grey-d9222f16ec16a33ed5e2c9bbdca07a4c48db14008bbebbabced8f8ed1fa2ad59.svg'
+import { Helmet } from 'react-helmet'
 
 export default function TvDetails() {
   const { id } = useParams()
@@ -17,7 +20,7 @@ export default function TvDetails() {
       }
     })
   }
-  const movieInfo = useQuery("getMovieDetails", getMovieDetails , {
+  const movieInfo = useQuery("getMovieDetails", getMovieDetails, {
     refetchInterval: 500,
   });
 
@@ -116,21 +119,16 @@ export default function TvDetails() {
           initialSlide: 2
         }
       }
-      // {
-      //   breakpoint: 480,
-      //   settings: {
-      //     slidesToShow: 2,
-      //     slidesToScroll: 2
-      //   }
-      // }
     ]
 
   };
 
-  const lastSeason = movieInfo.data?.data.seasons?.[movieInfo.data.data.seasons.length -1];
+  const lastSeason = movieInfo.data?.data.seasons?.[movieInfo.data.data.seasons.length - 1];
 
   return <>
-
+    <Helmet >
+      <title>BlockBoster Tv-Details</title>
+    </Helmet>
     <section className={tvDetailsCSS.main_sec} style={{ background: `url(https://image.tmdb.org/t/p/original/${movieInfo.data?.data.backdrop_path})` }}>
       <div className={tvDetailsCSS.main_div}>
         <div className="container">
@@ -148,7 +146,6 @@ export default function TvDetails() {
                 </div>
                 <p><span>over View : <br /></span>{movieInfo.data?.data.overview}</p>
                 <ul>
-                  {/* <li><strong>Release Date:</strong> {new Date(movieInfo.data?.data.release_date).toLocaleDateString()}</li> */}
                   <li><strong>Vote Average:</strong> {movieInfo.data?.data.vote_average}</li>
                   <li><strong>Popularity:</strong> {movieInfo.data?.data.popularity}</li>
                 </ul>
@@ -164,27 +161,28 @@ export default function TvDetails() {
     <section className={tvDetailsCSS.casts}>
       <div className="container">
         <div className="special_title">
-          <h2>Series Cast</h2>
+          <h2>Series Cast </h2>
         </div>
-        <div className="row gy-lg-0 gy-3">
-          {castInfo.data?.data.cast?.slice(0, 6).map((cast, ind) => {
-            return <div key={ind} className="col-lg-2 col-md-3 col-sm-4 col-6 px-1">
-              <div className={tvDetailsCSS.cast_item}>
-                <div className={tvDetailsCSS.cast_img}>
-                  <Link to={`/cast/${cast.id}`}><img src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`} alt={cast.name} /></Link>
-                </div>
-                <div className={tvDetailsCSS.cast_info}>
-                  <h3><Link to={`/cast/${cast.id}`}>{cast.name}</Link></h3>
-                  <p>{cast.known_for_department}</p>
-                </div>
+        <div className="row  gy-4">
+          {castInfo.data?.data?.cast.slice(0, 6).map((person, index) => {
+            return <div key={index} class="col-lg-2 col-md-3 col-sm-4 col-6 px-1 " >
+              <div className={"position-relative overflow-hidden " + tvDetailsCSS.slide}>
+                <Link to={`/cast/${person.id}`}>
+                  {person.profile_path ? <img src={`https://image.tmdb.org/t/p/original/${person.profile_path} `} alt={person.name} /> : <>
+                    {person.profile_path.gender == 1 ? <img src={femaleImage} alt={person.name} /> :
+                      <img src={maleImage} alt={person.name} />}
+                  </>}
+                </Link>
+              </div>
+              <div className={tvDetailsCSS.char}>
+                <h5 className='mt-2'><Link to={`/cast/${person.id}`}>{person.name}</Link></h5>
+                <p >{person?.known_for_department}</p>
+
               </div>
             </div>
           })}
+        </div>
 
-        </div>
-        <div className="text-end">
-          <Link title='vew all cast and crew' className={tvDetailsCSS.all_cast} to={`/cast/${movieInfo.data?.data.name}/${movieInfo.data?.data.id}`}>Full Cast & Crew <i class="fa-solid fa-arrow-right"></i></Link>
-        </div>
       </div>
     </section>
     {/* */}
@@ -213,7 +211,7 @@ export default function TvDetails() {
                 <span><i class="fa-solid fa-star me-1"></i> {lastSeason?.vote_average}</span>
                 <span>{lastSeason?.episode_count} Episodes</span>
               </div>
-              <p class={"card-text "+tvDetailsCSS.season_overview}>{lastSeason?.overview}</p>
+              <p class={"card-text " + tvDetailsCSS.season_overview}>{lastSeason?.overview}</p>
               <div className="text-end">
                 <Link title='vew all cast and crew' className={tvDetailsCSS.all_cast} to={`/seasons/${id}`}>View all Seasons <i class="fa-solid fa-arrow-right"></i></Link>
               </div>
@@ -290,7 +288,7 @@ export default function TvDetails() {
       <div className="container">
         <div className="special_title">
           <h2>Recommendations </h2>
-         
+
         </div>
 
         <div className="">

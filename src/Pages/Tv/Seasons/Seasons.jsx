@@ -4,6 +4,7 @@ import seasonCSS from './Seasons.module.css'
 import axios from 'axios'
 import { useQuery } from 'react-query'
 import LoadingScreen from '../../../Components/LoadingScreen/LoadingScreen'
+import { Helmet } from 'react-helmet'
 
 
 export default function Seasons() {
@@ -18,12 +19,15 @@ export default function Seasons() {
         })
     }
     const movieInfo = useQuery("getMovieDetails", getMovieDetails);
-  // handle loading
-  if (movieInfo.isLoading ) {
-    return <LoadingScreen />
-}
+    // handle loading
+    if (movieInfo.isLoading) {
+        return <LoadingScreen />
+    }
 
     return <>
+        <Helmet >
+            <title>BlockBoster Seasons-of-Series</title>
+        </Helmet>
 
         <section style={{ background: `url(https://image.tmdb.org/t/p/original/${movieInfo.data?.data.backdrop_path}` }} className={seasonCSS.banner}>
             <div className={seasonCSS.banner_div}>
@@ -40,9 +44,9 @@ export default function Seasons() {
                             <div className={seasonCSS.movie_content}>
 
                                 <h3> <Link className={seasonCSS.link} to={`/tvDetails/${movieInfo.data?.data.id}`}>{movieInfo.data?.data.name}
-                                {movieInfo.data?.data.seasons[movieInfo.data?.data.seasons.length - 1].air_date?.slice(0, 4) ?  <span>({movieInfo.data?.data.seasons[movieInfo.data?.data.seasons.length - 1].air_date?.slice(0, 4)})</span> : null}
-                               
-                                 </Link></h3>
+                                    {movieInfo.data?.data.seasons[movieInfo.data?.data.seasons.length - 1].air_date?.slice(0, 4) ? <span>({movieInfo.data?.data.seasons[movieInfo.data?.data.seasons.length - 1].air_date?.slice(0, 4)})</span> : null}
+
+                                </Link></h3>
                                 <Link className={seasonCSS.link} to={`/tvDetails/${movieInfo.data?.data.id}`}>
                                     <i class="fa-solid fa-arrow-left"></i>
                                     Back to main
@@ -61,29 +65,29 @@ export default function Seasons() {
                     <h2>all seasons of {movieInfo.data?.data.name}</h2>
                 </div>
 
-                {movieInfo.data?.data.seasons.map((season , idx) => {
+                {movieInfo.data?.data.seasons.map((season, idx) => {
                     return <div class={seasonCSS.season}>
                         <div class="row align-items-center">
                             <div className="col-lg-2 col-md-3">
                                 <div className={seasonCSS.season_cover}>
-                                    <Link  to={`/season/${seriesID}/${season.season_number}`}> <img src={`https://image.tmdb.org/t/p/original/${season.poster_path}`} alt={season.name} /></Link>
+                                    <Link to={`/season/${seriesID}/${season.season_number}`}> <img src={`https://image.tmdb.org/t/p/original/${season.poster_path}`} alt={season.name} /></Link>
                                 </div>
                             </div>
                             <div className="col-lg-10 col-md-9 mt-md-0 mt-3">
                                 <h5 class={seasonCSS.season_title}>
-                                    <Link  to={`/season/${seriesID}/${season.season_number}`}>
+                                    <Link to={`/season/${seriesID}/${season.season_number}`}>
                                         {season.name}
-                                        {season.air_date?.slice(0, 4) ?<span>({season.air_date?.slice(0, 4)})</span> :null}
-                                        
-                                        </Link>
+                                        {season.air_date?.slice(0, 4) ? <span>({season.air_date?.slice(0, 4)})</span> : null}
+
+                                    </Link>
                                 </h5>
                                 <div className={seasonCSS.season_info}>
-                                    {season.vote_average ==0 ? null : <span><i class="fa-solid fa-star me-1"></i> {season.vote_average}</span>}
-                                   
+                                    {season.vote_average == 0 ? null : <span><i class="fa-solid fa-star me-1"></i> {season.vote_average}</span>}
+
                                     <span>{season.episode_count} Episodes</span>
                                 </div>
                                 <p class="card-text"> season {season.season_number} of Breaking Bad premiered on {season.air_date}</p>
-                                <p class={"card-text "+seasonCSS.season_overview}>{season.overview}</p>
+                                <p class={"card-text " + seasonCSS.season_overview}>{season.overview}</p>
 
                             </div>
                         </div>

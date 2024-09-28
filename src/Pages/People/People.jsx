@@ -6,10 +6,10 @@ import { useQuery } from 'react-query';
 import LoadingScreen from '../../Components/LoadingScreen/LoadingScreen';
 import maleImage from '../../Images/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg'
 import femaleImage from '../../Images/glyphicons-basic-36-user-female-grey-d9222f16ec16a33ed5e2c9bbdca07a4c48db14008bbebbabced8f8ed1fa2ad59.svg'
+import { Helmet } from 'react-helmet';
 
 
 export default function People() {
-    // const [nameOfSort, setNameOfSort] = useState(localStorage.getItem('movieSortOfName') ? localStorage.getItem('movieSortOfName') : "Popular")
 
 
     async function getPopularPeople() {
@@ -21,13 +21,16 @@ export default function People() {
         })
     }
     const popularPeople = useQuery("getPopularPeople", getPopularPeople);
-    // console.log(popularPeople.data.data.results[2].known_for[0].title);
+
 
     // handle loading
     if (popularPeople.isLoading) {
         return <LoadingScreen />
     }
     return <>
+        <Helmet >
+            <title>BlockBoster Popular-People</title>
+        </Helmet>
 
         <section className={peopleCSS.banner}>
             <div className={peopleCSS.hero}>
@@ -47,7 +50,7 @@ export default function People() {
 
         <section className={peopleCSS.movie}>
             <div className="container">
-                <div className="special_title d-flex justify-content-between">
+                <div className="special_title">
                     <h2>Popular Movies </h2>
                 </div>
                 <div className="row  gy-4">
@@ -60,17 +63,11 @@ export default function People() {
                                             <img src={maleImage} alt={person.name} />}
                                     </>}
                                 </Link>
-                                {/* <div className={peopleCSS.overLayBtn}>
-                                    <div className={peopleCSS.btn}>
-                                        <Link to={`/moviesDetails/${person.id}`}>read more</Link>
-                                    </div>
-                                </div> */}
-
                             </div>
                             <div className={peopleCSS.char}>
                                 <h5><Link to={`/cast/${person.id}`}>{person.name}</Link></h5>
-                                {person.known_for?.map((job , idx) => {
-                                   return <p key={idx}>{job?.title} ,</p>
+                                {person.known_for?.map((job, idx) => {
+                                    return <p key={idx}>{job?.title} ,</p>
                                 })}
 
                             </div>

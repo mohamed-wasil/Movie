@@ -4,10 +4,8 @@ import './App.css';
 import Layout from './Layout/Layout';
 import Tv from './Pages/Tv/Tv.jsx';
 import Home from './Pages/Home/Home';
-import Login from './Pages/Login/Login';
 import Movie from './Pages/Movie/Movie';
 import CastInfo from './Pages/CastInfo/CastInfo';
-import Register from './Pages/Register/Register';
 import TvCast from './Pages/Tv/TvCast/TvCast.jsx';
 import Popular from './Pages/Movie/Popular/Popular';
 import Seasons from './Pages/Tv/Seasons/Seasons.jsx';
@@ -64,8 +62,6 @@ const myRouter = createBrowserRouter([
       { path: '/season/:seriesID/:seasonNumber', element: <SeasonDetails /> },
       { path: '/cast/:seriesName/:seriesID', element: <TvCast /> },
       { path: '/people', element: <People /> },
-      { path: '/login', element: <Login /> },
-      { path: '/register', element: <Register /> },
       { path: '/search', element: <Search /> },
       { path: '/cast/:castID', element: <CastInfo /> },
       { path: '/moviesDetails/:id', element: <MoviesDetails /> },

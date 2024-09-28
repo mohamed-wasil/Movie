@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import { Link, useParams } from 'react-router-dom';
 import LoadingScreen from '../../../../Components/LoadingScreen/LoadingScreen';
+import { Helmet } from 'react-helmet';
 export default function Similar() {
   const { movieID } = useParams()
 
@@ -33,6 +34,11 @@ export default function Similar() {
 
 
   return <>
+    <Helmet >
+            <title>BlockBoster Similar-Movies</title>
+           
+    </Helmet>
+
     <section style={{ background: `url(https://image.tmdb.org/t/p/original/${movieInfo.data?.data.backdrop_path}` }} className={movieCSS.banner}>
       <div className={movieCSS.banner_div}>
         <div className="container">

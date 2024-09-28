@@ -4,11 +4,12 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import { Link, useParams } from 'react-router-dom';
 import LoadingScreen from '../../../../Components/LoadingScreen/LoadingScreen';
+import { Helmet } from 'react-helmet';
 
 export default function TvRecomendation() {
   const { movieID } = useParams()
 
-  
+
   async function getMovieDetails() {
     return await axios.get(`https://api.themoviedb.org/3/tv/${movieID}?language=en-US`, {
       headers: {
@@ -35,64 +36,67 @@ export default function TvRecomendation() {
   }
 
   return <>
-  <section style={{ background: `url(https://image.tmdb.org/t/p/original/${movieInfo.data?.data.backdrop_path}` }} className={movieCSS.banner}>
-            <div className={movieCSS.banner_div}>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-1">
-                            <div className={movieCSS.poster}>
-                                <Link to={`/tvDetails/${movieInfo.data?.data.id}`}>
-                                    <img src={`https://image.tmdb.org/t/p/original/${movieInfo.data?.data.poster_path}`} alt={movieInfo.data?.data.name} />
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="col-md-8">
-                            <div className={movieCSS.movie_content}>
-
-                                <h3> <Link className={movieCSS.link} to={`/tvDetails/${movieInfo.data?.data.id}`}>{movieInfo.data?.data.name}
-                                    <span>({movieInfo.data?.data.first_air_date?.slice(0, 4)})</span>
-
-                                    {/* {movieInfo.data?.data.seasons[movieInfo.data?.data.seasons.length - 1].air_date ?  <span>({movieInfo.data?.data.seasons[movieInfo.data?.data.seasons?.length - 1].air_date?.slice(0, 4)})</span> : ""} */}
-
-                                </Link></h3>
-                                <Link className={movieCSS.link} to={`/tvDetails/${movieInfo.data?.data.id}`}>
-                                    <i class="fa-solid fa-arrow-left"></i>
-                                    Back to main
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-  {/*  */}
-  <section className={movieCSS.movie}>
-    <div className="container">
-      <div className="special_title d-flex justify-content-between">
-        <h2>Recomendation Tv Series </h2>
-      </div>
-      <div className="row gy-3">
-        {movies.data?.data.results?.map((movie, index) => {
-          return <div key={index} class="col-lg-2 col-md-3 col-4 px-sm-2 px-1" >
-            <div className={"position-relative overflow-hidden " + movieCSS.slide}>
-              <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path} `} alt={movie.title} />
-              <div className={movieCSS.overLayBtn}>
-                <div className={movieCSS.btn}>
-                  <Link to={`/tvDetails/${movie.id}`}>read more</Link>
-                </div>
+    <Helmet >
+      <title>BlockBoster Recomendation-Series</title>
+    </Helmet>
+    <section style={{ background: `url(https://image.tmdb.org/t/p/original/${movieInfo.data?.data.backdrop_path}` }} className={movieCSS.banner}>
+      <div className={movieCSS.banner_div}>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-1">
+              <div className={movieCSS.poster}>
+                <Link to={`/tvDetails/${movieInfo.data?.data.id}`}>
+                  <img src={`https://image.tmdb.org/t/p/original/${movieInfo.data?.data.poster_path}`} alt={movieInfo.data?.data.name} />
+                </Link>
               </div>
-
             </div>
-            <div className={movieCSS.char}>
-              <h5><Link to={`/tvDetails/${movie.id}`}>{movie.title}</Link></h5>
-              <p><i class="fa-solid fa-star"></i>{movie.vote_average}<span>/ 10</span></p>
+            <div className="col-md-8">
+              <div className={movieCSS.movie_content}>
+
+                <h3> <Link className={movieCSS.link} to={`/tvDetails/${movieInfo.data?.data.id}`}>{movieInfo.data?.data.name}
+                  <span>({movieInfo.data?.data.first_air_date?.slice(0, 4)})</span>
+
+                  {/* {movieInfo.data?.data.seasons[movieInfo.data?.data.seasons.length - 1].air_date ?  <span>({movieInfo.data?.data.seasons[movieInfo.data?.data.seasons?.length - 1].air_date?.slice(0, 4)})</span> : ""} */}
+
+                </Link></h3>
+                <Link className={movieCSS.link} to={`/tvDetails/${movieInfo.data?.data.id}`}>
+                  <i class="fa-solid fa-arrow-left"></i>
+                  Back to main
+                </Link>
+              </div>
             </div>
           </div>
-        })}
+        </div>
       </div>
+    </section>
+    {/*  */}
+    <section className={movieCSS.movie}>
+      <div className="container">
+        <div className="special_title d-flex justify-content-between">
+          <h2>Recomendation Tv Series </h2>
+        </div>
+        <div className="row gy-3">
+          {movies.data?.data.results?.map((movie, index) => {
+            return <div key={index} class="col-lg-2 col-md-3 col-4 px-sm-2 px-1" >
+              <div className={"position-relative overflow-hidden " + movieCSS.slide}>
+                <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path} `} alt={movie.title} />
+                <div className={movieCSS.overLayBtn}>
+                  <div className={movieCSS.btn}>
+                    <Link to={`/tvDetails/${movie.id}`}>read more</Link>
+                  </div>
+                </div>
 
-    </div>
-  </section>
+              </div>
+              <div className={movieCSS.char}>
+                <h5><Link to={`/tvDetails/${movie.id}`}>{movie.title}</Link></h5>
+                <p><i class="fa-solid fa-star"></i>{movie.vote_average}<span>/ 10</span></p>
+              </div>
+            </div>
+          })}
+        </div>
 
-</>
+      </div>
+    </section>
+
+  </>
 }

@@ -7,6 +7,7 @@ import femaleImage from '../../../Images/glyphicons-basic-36-user-female-grey-d9
 
 import castCSS from './Cast.module.css'
 import LoadingScreen from '../../../Components/LoadingScreen/LoadingScreen'
+import { Helmet } from 'react-helmet'
 
 export default function CastAndCrew() {
 
@@ -38,19 +39,21 @@ export default function CastAndCrew() {
         return <LoadingScreen />
     }
     return <>
-
+        <Helmet >
+            <title>BlockBoster Cast-Crew</title>
+        </Helmet>
         <section style={{ background: `url(https://image.tmdb.org/t/p/original/${movieInfo.data?.data.backdrop_path}` }} className={castCSS.banner}>
             <div className={castCSS.banner_div}>
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-1">
+                        <div className="ol-lg-1 col-md-2 col-sm-3">
                             <div className={castCSS.poster}>
                                 <Link to={`/moviesDetails/${movieInfo.data?.data.id}`}>
                                     <img src={`https://image.tmdb.org/t/p/original/${movieInfo.data?.data.poster_path}`} alt={movieInfo.data?.data.original_title} />
                                 </Link>
                             </div>
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-sm-8 mt-sm-0 mt-3">
                             <div className={castCSS.movie_content}>
 
                                 <h3> <Link className={castCSS.link} to={`/moviesDetails/${movieInfo.data?.data.id}`}>{movieInfo.data?.data.original_title} <span>({movieInfo.data?.data.release_date.slice(0, 4)})</span> </Link></h3>

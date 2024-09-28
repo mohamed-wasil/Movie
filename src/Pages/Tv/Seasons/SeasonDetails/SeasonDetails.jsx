@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import { Link, useParams } from 'react-router-dom';
 import LoadingScreen from '../../../../Components/LoadingScreen/LoadingScreen';
+import { Helmet } from 'react-helmet';
 
 
 export default function SeasonDetails() {
@@ -35,7 +36,9 @@ export default function SeasonDetails() {
     }
 
     return <>
-
+   <Helmet >
+      <title>BlockBoster Seasons-Details</title>
+    </Helmet>
         <section style={{ background: `url(https://image.tmdb.org/t/p/original/${movieInfo.data?.data.backdrop_path}` }} className={seasonCSS.banner}>
             <div className={seasonCSS.banner_div}>
                 <div className="container">

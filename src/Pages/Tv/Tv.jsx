@@ -4,6 +4,7 @@ import { useQuery } from 'react-query';
 import React, { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import LoadingScreen from '../../Components/LoadingScreen/LoadingScreen';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -34,6 +35,9 @@ export default function Tv() {
   }
 
   return <>
+     <Helmet >
+      <title>BlockBoster Tv-Series</title>
+    </Helmet>
     <section className={movieCSS.banner}>
       <div className={movieCSS.hero}>
         <div className="container">

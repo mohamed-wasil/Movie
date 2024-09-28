@@ -4,9 +4,14 @@ import HomeSlider from '../../Components/HomeSlider/HomeSlider'
 import { Link, Outlet } from 'react-router-dom'
 import TeaterSlider from '../../Components/TeaterSlider/TeaterSlider'
 import TvSlider from '../../Components/TvSlider/TvSlider'
+import { Helmet } from 'react-helmet'
 
 export default function Home() {
   return <>
+    <Helmet >
+            <title>BlockBoster Home </title>
+    </Helmet>
+
     <section className={homeCSS.home}>
       <HomeSlider />
     </section>

@@ -5,6 +5,9 @@ import { Link, useParams } from 'react-router-dom'
 import movieDetailsCSS from './MovieDetails.module.css'
 import Slider from 'react-slick'
 import LoadingScreen from '../../../Components/LoadingScreen/LoadingScreen'
+import maleImage from '../../../Images/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg'
+import femaleImage from '../../../Images/glyphicons-basic-36-user-female-grey-d9222f16ec16a33ed5e2c9bbdca07a4c48db14008bbebbabced8f8ed1fa2ad59.svg'
+import { Helmet } from 'react-helmet'
 
 export default function MoviesDetails() {
   const { id } = useParams()
@@ -128,6 +131,9 @@ export default function MoviesDetails() {
   };
 
   return <>
+    <Helmet >
+      <title>BlockBoster Movie-Details</title>
+    </Helmet>
 
     <section className={movieDetailsCSS.main_sec} style={{ background: `url(https://image.tmdb.org/t/p/original/${movieInfo.data?.data.backdrop_path})` }}>
       <div className={movieDetailsCSS.main_div}>
@@ -159,30 +165,32 @@ export default function MoviesDetails() {
     </section>
 
     {/*  */}
+
     <section className={movieDetailsCSS.casts}>
       <div className="container">
         <div className="special_title">
-          <h2>Series Cast</h2>
+          <h2>Series Cast </h2>
         </div>
-        <div className="row gy-lg-0 gy-3">
-          {castInfo.data?.data?.cast.slice(0, 6).map((cast, ind) => {
-            return <div key={ind} className="col-lg-2 col-md-3 col-sm-4 col-6 px-1">
-              <div className={movieDetailsCSS.cast_item}>
-                <div className={movieDetailsCSS.cast_img}>
-                  <Link to={`/cast/${cast.id}`}> <img src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`} alt={cast.name} /></Link>
-                </div>
-                <div className={movieDetailsCSS.cast_info}>
-                  <h3><Link to={`/cast/${cast.id}`}>{cast.name}</Link></h3>
-                  <p>{cast.known_for_department}</p>
-                </div>
+        <div className="row  gy-4">
+          {castInfo.data?.data?.cast.slice(0, 6).map((person, index) => {
+            return <div key={index} class="col-lg-2 col-md-3 col-sm-4 col-6 px-1 " >
+              <div className={"position-relative overflow-hidden " + movieDetailsCSS.slide}>
+                <Link to={`/cast/${person.id}`}>
+                  {person.profile_path ? <img src={`https://image.tmdb.org/t/p/original/${person.profile_path} `} alt={person.name} /> : <>
+                    {person.profile_path.gender == 1 ? <img src={femaleImage} alt={person.name} /> :
+                      <img src={maleImage} alt={person.name} />}
+                  </>}
+                </Link>
+              </div>
+              <div className={movieDetailsCSS.char}>
+                <h5 className='mt-2'><Link to={`/cast/${person.id}`}>{person.name}</Link></h5>
+                <p >{person?.known_for_department}</p>
+
               </div>
             </div>
           })}
+        </div>
 
-        </div>
-        <div className="text-end">
-          <Link title='vew all cast and crew' className={movieDetailsCSS.all_cast} to={`/castandcrew/${movieInfo.data?.data.id}`}>Full Cast & Crew <i class="fa-solid fa-arrow-right"></i></Link>
-        </div>
       </div>
     </section>
 

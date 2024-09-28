@@ -7,6 +7,7 @@ import Slider from 'react-slick';
 import maleImage from '../../Images/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg'
 import femaleImage from '../../Images/glyphicons-basic-36-user-female-grey-d9222f16ec16a33ed5e2c9bbdca07a4c48db14008bbebbabced8f8ed1fa2ad59.svg'
 import LoadingScreen from '../../Components/LoadingScreen/LoadingScreen';
+import { Helmet } from 'react-helmet';
 
 
 export default function CastInfo() {
@@ -71,7 +72,24 @@ export default function CastInfo() {
         prevArrow: <SamplePrevArrow />,
         speed: 9000,
         autoplaySpeed: 0,
-        cssEase: "linear"
+        cssEase: "linear",
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                }
+            },
+          
+        ]
     };
 
 
@@ -84,11 +102,15 @@ export default function CastInfo() {
 
     return <>
 
+    <Helmet >
+            <title>BlockBoster Cast-Info</title>
+    </Helmet>
+
         <section className={castCSS.cast}>
             <div className="position-relative z-2">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-3">
+                        <div className="col-lg-4 col-md-5 col-sm-12">
                             <div className={castCSS.cast_image}>
 
                                 {castInfo.data?.data.profile_path ? <img src={`https://image.tmdb.org/t/p/original/${castInfo.data?.data.profile_path}`} alt={castInfo.data?.data.name} />
@@ -98,12 +120,12 @@ export default function CastInfo() {
                                     </>}
                             </div>
                         </div>
-                        <div className="col-md-9">
+                        <div className="col-lg-8 col-md-7 col-sm-12">
                             <div className={castCSS.cast_info}>
                                 <h2>{castInfo.data?.data.name}</h2>
                                 <h3>Biography</h3>
 
-                                <p>
+                                <p >
                                     {isExpanded ? <>
                                         {castInfo.data?.data.biography.split(".").map((text, idx) => {
                                             return <>
@@ -140,30 +162,31 @@ export default function CastInfo() {
                 <div className="row">
                     <div className="col-md-3">
                         <h4 className='mb-5 text-decoration-underline '>Personal Information</h4>
-                        <p className={castCSS.text}>
-
+                        {castInfo.data?.data.known_for_department ?  <p className={castCSS.text}>
                             <strong className='d-block'>Known For</strong>
                             <span>{castInfo.data?.data.known_for_department}</span>
-                        </p>
-
-                        <p className={castCSS.text}>
+                        </p>:''}
+                      
+                        {castInfo.data?.data.gender ?   <p className={castCSS.text}>
                             <strong className='d-block'>Gender</strong>
                             <span>{castInfo.data?.data.gender == 1 ? "Female" : "Male "}</span>
-                        </p>
-
-                        <p className={castCSS.text}>
+                        </p>: ''}
+                      
+                        {castInfo.data?.data.birthday? <p className={castCSS.text}>
                             <strong className='d-block'>Birthday</strong>
                             <span> {castInfo.data?.data.birthday}</span>
-                        </p>
+                        </p> :''}
+                        
                         {castInfo.data?.data.deathday ? <p className={castCSS.text}>
                             <strong className='d-block'>deathday</strong>
                             <span>   {castInfo.data?.data.deathday}</span>
                         </p> : ""}
-                        <p className={castCSS.text}>
-                            <strong className='d-block'>Place of Birth </strong>
 
+                        {castInfo.data?.data.place_of_birth ? <p className={castCSS.text}>
+                            <strong className='d-block'>Place of Birth </strong>
                             <span> {castInfo.data?.data.place_of_birth}</span>
-                        </p>
+                        </p> : ''}
+                       
 
                         {castInfo.data?.data.also_known_as.length == 0 ? "" : <p className={castCSS.text}>
                             <strong className='d-block'>Also Known As</strong>
@@ -180,7 +203,7 @@ export default function CastInfo() {
                                 <Slider {...settings} className="row justify-content-center">
 
                                     {castMovies.data?.data.cast?.map((movie, index) => {
-                                        return <div key={index} class="col-md-3 px-3 " >
+                                        return <div key={index} class="col-md-3 px-1 " >
                                             <div className={"position-relative overflow-hidden " + castCSS.slide}>
                                                 <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path} `} alt={movie.title} />
                                                 <div className={castCSS.overLayBtn}>
