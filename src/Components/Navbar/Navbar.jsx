@@ -187,8 +187,8 @@ function handleSearchlistActive(item){
 
   useEffect(() => { }, [activeItem])
   return <>
-    <div className={navbarCSS.nav_section}>
-      <nav className={"navbar navbar-expand-lg  " + navbarCSS.nav}>
+    <div  className={navbarCSS.nav_section}>
+      <nav id='header' className={"navbar navbar-expand-lg  " + navbarCSS.nav}>
         <div className="container">
           <Link className="navbar-brand" to="/">
             <img src={Logo} alt="Logo" />
