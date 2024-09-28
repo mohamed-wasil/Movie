@@ -9,7 +9,12 @@ import LoadingScreen from '../../Components/LoadingScreen/LoadingScreen';
 
 export default function Movie() {
   const [nameOfSort, setNameOfSort] = useState(localStorage.getItem('movieSortOfName') ? localStorage.getItem('movieSortOfName') : "Popular")
+  const [activeSortItem, setActiveSortItem] = useState(localStorage.getItem("activeSort") ? localStorage.getItem("activeSort") : "popular");
 
+  function handleActiveSortItem(item) {
+    setActiveSortItem(item)
+    localStorage.setItem("activeSort", item)
+  }
 
   async function getRelatedMovies() {
     return await axios.get(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1`, {
@@ -20,8 +25,8 @@ export default function Movie() {
     })
   }
   const relatedMovies = useQuery("getRelatedMovies", getRelatedMovies);
-   // handle loading
-   if (relatedMovies.isLoading) {
+  // handle loading
+  if (relatedMovies.isLoading) {
     return <LoadingScreen />
   }
 
@@ -47,38 +52,44 @@ export default function Movie() {
         <div className="special_title d-flex justify-content-between">
           <h2>{nameOfSort} Movies </h2>
           <div className="d-flex align-items-center ">
-            <p className='m-0 me-3 h4 text-capitalize'>Sort By :</p>
-          <div class="dropdown">
-            <button class={" dropdown-toggle "+ movieCSS.drobDown} type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              {nameOfSort}
-            </button>
-     
-            <ul class="dropdown-menu">
-            <li onClick={()=>{
-                setNameOfSort("Top Rated");
-                localStorage.setItem('movieSortOfName', "Top Rated")
-                }}><Link  to='toprated' class="dropdown-item" >Top Rated</Link></li>
+            <p className={'m-0 me-3 h4 text-capitalize ' + movieCSS.sort}>Sort By :</p>
+            <div class="dropdown">
+              <button class={" dropdown-toggle " + movieCSS.drobDown} type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {nameOfSort}
+              </button>
 
-              <li onClick={()=>{
-                setNameOfSort("Popular");
-                localStorage.setItem('movieSortOfName', "Popular")
-                }}><Link  to='popular' class="dropdown-item" >Popular</Link></li>
-             
-              <li onClick={()=>{
-                setNameOfSort("Now Playing");
-                localStorage.setItem('movieSortOfName', "Now Playing")
-                }}><Link  to='nowplaying' class="dropdown-item" >Now Playing</Link></li>
+              <ul class="dropdown-menu">
+              <li className={activeSortItem == "popular"? movieCSS.active :""} onClick={() => {
+                  setNameOfSort("Popular");
+                  localStorage.setItem('movieSortOfName', "Popular")
+                  handleActiveSortItem("popular")
+                }}><Link to='popular' class="dropdown-item" >Popular</Link></li>
 
-              <li onClick={()=>{
-                setNameOfSort("Up Coming");
-                localStorage.setItem('movieSortOfName', "Up Coming")}}><Link  to='upcoming' class="dropdown-item" >UP Comming</Link></li>
-            </ul>
+                <li className={activeSortItem == "top rated"? movieCSS.active :""} onClick={() => {
+                  setNameOfSort("Top Rated");
+                  localStorage.setItem('movieSortOfName', "Top Rated")
+                  handleActiveSortItem("top rated")
+                }}><Link to='toprated' class="dropdown-item" >Top Rated</Link></li>
+
+               
+                <li className={activeSortItem == "now playing"? movieCSS.active :""} onClick={() => {
+                  setNameOfSort("Now Playing");
+                  localStorage.setItem('movieSortOfName', "Now Playing")
+                  handleActiveSortItem("now playing")
+                }}><Link to='nowplaying' class="dropdown-item" >Now Playing</Link></li>
+
+                <li className={activeSortItem == "up comming"? movieCSS.active :""} onClick={() => {
+                  setNameOfSort("Up Coming");
+                  localStorage.setItem('movieSortOfName', "Up Coming")
+                  handleActiveSortItem("up comming")
+                }}><Link to='upcoming' class="dropdown-item" >UP Comming</Link></li>
+              </ul>
+            </div>
           </div>
-          </div>
-          
+
         </div>
-        <div className="row gy-3">
-          <Outlet />     
+        <div className="row gy-lg-3 gy-2">
+          <Outlet />
         </div>
 
       </div>

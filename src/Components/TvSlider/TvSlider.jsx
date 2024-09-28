@@ -3,12 +3,18 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
-import tvSliderCSS from './TvSlider.module.css'
+import tvSliderCSS from '../TeaterSlider/Slider.module.css'
 import { Link } from "react-router-dom";
 
 export default function TvSlider() {
     const [apiLink, setApiLink] = useState('https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1')
-    const [movie, setMovie] = useState(null)
+    const [movie, setMovie] = useState(null)  ;
+     const [activeItem, setActiveItem] = useState('#top rated')
+
+    // handle active class
+    const handleItemClick = (item, apiLink) => {
+        setActiveItem(item);
+    };
 
     async function getmovie() {
         try {
@@ -51,14 +57,23 @@ export default function TvSlider() {
     var settings = {
         infinite: true,
         slidesToShow: 4,
-        slidesToScroll: 3,
+        slidesToScroll: 4,
         autoplay: true,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
         speed: 9000,
         autoplaySpeed: 0,
         cssEase: "linear",
-        rtl: true
+        rtl: true,
+        responsive: [
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3
+              }
+            }
+          ]
     };
 
 
@@ -93,16 +108,16 @@ export default function TvSlider() {
         </div>
 
         <ul className={'list-unstyled p-0 d-flex ' + tvSliderCSS.teater_list}>
-            <li id="list" className={tvSliderCSS.active} onClick={() => { setApiLink('https://api.themoviedb.org/3/tv/popular?language=en-US&page=1') }}>#popular</li>
-            <li id="list" onClick={() => { setApiLink('https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1') }}>#on air</li>
-            <li id="list" onClick={() => { setApiLink('https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1') }}>#top rated</li>
-            <li id="list" onClick={() => { setApiLink('https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1') }}>#airing today</li>
+            <li className={activeItem === '#top rated' ? tvSliderCSS.active : ''} onClick={() => {handleItemClick('#top rated', 'https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1')   }}>#top rated</li>
+            <li className={activeItem === '#popular' ? tvSliderCSS.active : ''}  onClick={() => {handleItemClick('#popular', 'https://api.themoviedb.org/3/tv/popular?language=en-US&page=1')  }}>#popular</li>
+            <li className={activeItem === '#on air' ? tvSliderCSS.active : ''}  onClick={() => { handleItemClick('#on air', 'https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1')  }}>#on air</li>
+            <li className={activeItem === '#airing today' ? tvSliderCSS.active : ''}  onClick={() => { handleItemClick('#airing today', 'https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1')  }}>#airing today</li>
         </ul>
         <div className="">
             <Slider {...settings} className="row justify-content-center">
 
                 {movie?.map((movie, index) => {
-                    return <div key={index} class="col-md-3 px-3 " >
+                    return <div key={index} class="col-md-3 px-1 " >
                         <div className={"position-relative overflow-hidden " + tvSliderCSS.slide}>
                             <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path} `} alt={movie.name} />
                           <div id="rateArea"  className={tvSliderCSS.overLay}>

@@ -124,10 +124,6 @@
     transition: all .3s;
 }
 
-.news h3:hover {
-    color: #dcf836;
-}
-
 .news .time {
     font-size: 12px;
     color: #abb7c4;
@@ -156,13 +152,46 @@
     text-transform: none;
 }
 
-.news .more_news .more_it{
+.news .more_news .more_it {
     margin-right: 15px;
     margin-bottom: 30px;
     padding-right: 15px;
 }
-.news .more_news .more_it h3{
+
+.news .more_news .more_it h3 {
     font-size: 16px;
     font-weight: bold;
     text-transform: none;
+}
+@media only screen and (max-width: 992px){
+
+    .news .more_news .more_it {
+        margin-right: 0px;
+    }
+    
+}
+@media only screen and (max-width: 600px) {
+
+    .news,
+    .news,
+    .teater {
+        padding: 40px 0;
+    }
+
+    .breaking_bad {
+        height: 40rem;
+    }
+
+    .news_banner,
+    .news .tabs {
+        margin-bottom: 40px;
+    }
+    .news h3 {
+        margin-top: 15px;
+        font-size: 18px;
+       
+    }
+    .news .more_news .more_it{
+        margin-bottom: 15px;
+    }
 }

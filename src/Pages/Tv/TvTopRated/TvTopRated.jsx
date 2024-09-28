@@ -25,9 +25,9 @@ export default function TvTopRated() {
   return <>
 
     {movies.data?.data.results?.map((movie, index) => {
-      return <div key={index} class="col-md-2 px-3 " >
+      return <div key={index} class="col-lg-2 col-md-3 col-4 px-sm-2 px-1 " >
         <div className={"position-relative overflow-hidden " + movieCSS.slide}>
-          <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path} `} alt={movie.title} />
+          <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path} `} alt={movie.name} />
           <div className={movieCSS.overLayBtn}>
             <div className={movieCSS.btn}>
               <Link to={`/tvDetails/${movie.id}`}>read more</Link>
@@ -36,7 +36,7 @@ export default function TvTopRated() {
 
         </div>
         <div className={movieCSS.char}>
-          <h5><Link to={`/tvDetails/${movie.id}`}>{movie.title}</Link></h5>
+          <h5><Link to={`/tvDetails/${movie.id}`}>{movie.name}</Link></h5>
           <p><i class="fa-solid fa-star"></i>{movie.vote_average}<span>/ 10</span></p>
         </div>
       </div>

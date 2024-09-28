@@ -98,3 +98,29 @@
     display: block;
 }
 
+@media only screen and (max-width: 768px) {
+
+    .season .season_cover {
+        min-width: 250px;
+        width: 350px;
+        /* height: 500px; */
+        height: auto;
+        margin: auto;
+    }
+
+    .last_season .season .season_title  {
+        margin-top: 15px;
+    }
+
+    .last_season .season .season_overview {
+        font-size: 15px;
+    }
+}
+@media only screen and (max-width: 540px){
+    .season .season_cover {
+        min-width: auto;
+        width: auto;
+        height: auto;
+    }
+    
+}

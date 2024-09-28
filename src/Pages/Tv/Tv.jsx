@@ -10,6 +10,12 @@ import LoadingScreen from '../../Components/LoadingScreen/LoadingScreen';
 export default function Tv() {
   const [nameOfSort, setNameOfSort] = useState(localStorage.getItem('tvNameOfSort') ? localStorage.getItem('tvNameOfSort') : " Top Rated")
 
+  const [activeSortItem, setActiveSortItem] = useState(localStorage.getItem("tvActiveSort") ? localStorage.getItem("tvActiveSort") : "top rated");
+
+  function handleActiveSortItem(item) {
+    setActiveSortItem(item)
+    localStorage.setItem("tvActiveSort", item)
+  }
 
   async function getRelatedMovies() {
     return await axios.get(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1`, {
@@ -49,31 +55,35 @@ export default function Tv() {
         <div className="special_title d-flex justify-content-between">
           <h2>{nameOfSort} Movies </h2>
           <div className="d-flex align-items-center ">
-            <p className='m-0 me-3 h4 text-capitalize'>Sort By :</p>
+            <p className={'m-0 me-3 h4 text-capitalize ' + movieCSS.sort}>Sort By :</p>
             <div class="dropdown">
               <button class={" dropdown-toggle " + movieCSS.drobDown} type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {nameOfSort}
               </button>
 
               <ul class="dropdown-menu">
-              <li onClick={() => {
+                <li className={activeSortItem == "top rated" ? movieCSS.active : ''} onClick={() => {
                   setNameOfSort("Top Rated");
                   localStorage.setItem('tvNameOfSort', "Top Rated")
+                  handleActiveSortItem("top rated")
                 }}><Link to='toprated' class="dropdown-item" >Top Rated</Link></li>
-   
-                <li onClick={() => {
+
+                <li className={activeSortItem == "popular" ? movieCSS.active : ''} onClick={() => {
                   setNameOfSort("Popular");
                   localStorage.setItem('tvNameOfSort', "Popular")
+                  handleActiveSortItem("popular")
                 }}><Link to='popular' class="dropdown-item" >Popular</Link></li>
 
-                <li onClick={() => {
+                <li className={activeSortItem == "airing today" ? movieCSS.active : ''} onClick={() => {
                   setNameOfSort("Airing Today");
                   localStorage.setItem('tvNameOfSort', "Airing Today")
+                  handleActiveSortItem("airing today")
                 }}><Link to='airingToday' class="dropdown-item" >Airing Today</Link></li>
 
-                <li onClick={() => {
+                <li className={activeSortItem == "on air" ? movieCSS.active : ''} onClick={() => {
                   setNameOfSort("On Air");
                   localStorage.setItem('tvNameOfSort', "On Air")
+                  handleActiveSortItem("on air")
                 }}><Link to='onAir' class="dropdown-item" >On Air</Link></li>
               </ul>
             </div>

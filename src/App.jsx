@@ -4,7 +4,6 @@ import './App.css';
 import Layout from './Layout/Layout';
 import Tv from './Pages/Tv/Tv.jsx';
 import Home from './Pages/Home/Home';
-import News from './Pages/News/News';
 import Login from './Pages/Login/Login';
 import Movie from './Pages/Movie/Movie';
 import CastInfo from './Pages/CastInfo/CastInfo';

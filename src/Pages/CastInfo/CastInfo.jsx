@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react'
+import React, { useState } from 'react'
 import { useQuery } from 'react-query';
 import { Link, useParams } from 'react-router-dom'
 import castCSS from './CastInfo.module.css'
@@ -11,6 +11,7 @@ import LoadingScreen from '../../Components/LoadingScreen/LoadingScreen';
 
 export default function CastInfo() {
     const { castID } = useParams();
+    const [isExpanded, setIsExpanded] = useState(false);
 
     async function getCastInfo() {
         return await axios.get(`https://api.themoviedb.org/3/person/${castID}language=en-US`, {
@@ -37,7 +38,7 @@ export default function CastInfo() {
     if (castMovies.isLoading || castInfo.isLoading) {
         return <LoadingScreen />
     }
-    
+
 
     function SampleNextArrow(props) {
         const { className, style, onClick } = props;
@@ -73,6 +74,14 @@ export default function CastInfo() {
         cssEase: "linear"
     };
 
+
+
+    const handleToggle = () => {
+        setIsExpanded(!isExpanded);
+    };
+
+    const previewText = castInfo.data?.data.biography.length > 500 ? castInfo.data?.data.biography.substring(0, 500) + '...' : castInfo.data?.data.biography;
+
     return <>
 
         <section className={castCSS.cast}>
@@ -81,7 +90,7 @@ export default function CastInfo() {
                     <div className="row">
                         <div className="col-md-3">
                             <div className={castCSS.cast_image}>
-                                {/* <img src={`https://image.tmdb.org/t/p/original/${castInfo.data?.data.profile_path}`} alt={castInfo.data?.data.name} /> */}
+
                                 {castInfo.data?.data.profile_path ? <img src={`https://image.tmdb.org/t/p/original/${castInfo.data?.data.profile_path}`} alt={castInfo.data?.data.name} />
                                     : <>
                                         {castInfo.data?.data.gender == 1 ? <img src={femaleImage} alt={castInfo.data?.data.name} /> :
@@ -93,7 +102,30 @@ export default function CastInfo() {
                             <div className={castCSS.cast_info}>
                                 <h2>{castInfo.data?.data.name}</h2>
                                 <h3>Biography</h3>
-                                <p>{castInfo.data?.data.biography.split(".").map((text, idx) => { return <span key={idx}>{text}</span> })}</p>
+
+                                <p>
+                                    {isExpanded ? <>
+                                        {castInfo.data?.data.biography.split(".").map((text, idx) => {
+                                            return <>
+                                                <span key={idx}>{text}</span>
+                                            </>
+
+                                        })}
+                                    </> : <>
+                                        {previewText.split(".").map((text, idx) => {
+                                            return <>
+                                                <span key={idx}>{text}</span>
+                                            </>
+
+                                        })}
+                                    </>}
+                                    {castInfo.data?.data.biography.length > 500 && (
+                                        <span onClick={handleToggle} className={castCSS.handleText} >
+                                            {isExpanded ? ' Read Less' : ' Read More'}
+                                        </span>
+                                    )}
+                                </p>
+
                             </div>
                         </div>
                     </div>
@@ -101,6 +133,7 @@ export default function CastInfo() {
             </div>
         </section>
         {/*  */}
+
 
         <section className={castCSS.personal}>
             <div className="container">

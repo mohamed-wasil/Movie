@@ -46,3 +46,13 @@
 .footer ul li a:hover {
  color: #dcf836 ;
 }
+
+@media only screen and (max-width: 600px){
+    .footer .logo_ft{
+        width: 30%;
+    }
+    .footer h4{
+         margin-bottom: 20px;
+         margin-top: 10px;
+    }
+}

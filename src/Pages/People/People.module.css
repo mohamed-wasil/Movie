@@ -121,7 +121,7 @@
     font-size: 18px;
     color: #ffffff;
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: capitalize;
     transition: all .3s;
 }
 
@@ -134,4 +134,25 @@
     font-size: 14px;
     display: inline-block;
     margin: 0;
+}
+@media only screen and (max-width: 768px) {
+    
+    
+    .movie .char h5 a{
+        font-size: 16px;
+    }
+    .movie .char p{
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .banner .hero h1 {
+        font-size: 30px;
+    }
+    .movie .char h5 a{
+        font-size: 15px;
+    }
+    .movie .char p{
+        font-size: 12px;
+    }
 }

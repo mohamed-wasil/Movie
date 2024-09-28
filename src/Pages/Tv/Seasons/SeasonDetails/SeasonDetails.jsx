@@ -40,14 +40,14 @@ export default function SeasonDetails() {
             <div className={seasonCSS.banner_div}>
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-1">
+                        <div className="col-lg-1 col-md-2 col-sm-3">
                             <div className={seasonCSS.poster}>
                                 <Link to={`/tvDetails/${movieInfo.data?.data.id}`}>
                                     <img src={`https://image.tmdb.org/t/p/original/${seasonInfo.data?.data.poster_path}`} alt={seasonInfo.data?.data.name} />
                                 </Link>
                             </div>
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-sm-8 mt-sm-0 mt-3">
                             <div className={seasonCSS.movie_content}>
 
                                 <h3> <Link className={seasonCSS.link} to={`/tvDetails/${movieInfo.data?.data.id}`}>{seasonInfo.data?.data.name}
@@ -76,12 +76,12 @@ export default function SeasonDetails() {
                 {seasonInfo.data?.data.episodes.map((season, idx) => {
                     return <div key={idx} class={seasonCSS.season}>
                         <div class="row align-items-center">
-                            <div className="col-md-2">
-                                <div className="">
+                            <div className="col-lg-2 col-md-3">
+                                <div className={seasonCSS.season_cover}>
                                     <Link to={``}> <img src={`https://image.tmdb.org/t/p/original/${season.still_path}`} alt={season.name} /></Link>
                                 </div>
                             </div>
-                            <div className="col-md-10">
+                            <div className="col-lg-10 col-md-9 mt-md-0 mt-3">
                                 <h5 class={seasonCSS.season_title}>
                                     <Link to={``}>
                                         <p className='me-2 d-inline-block'>{season.episode_number} - </p>
@@ -94,7 +94,7 @@ export default function SeasonDetails() {
                                     <span><i class="fa-solid fa-star me-1"></i> {season.vote_average}</span>
                                     <span className='text-decoration-underline'>{season.runtime} min</span>
                                 </div>
-                                <p class="card-text">{season.overview}</p>
+                                <p class={"card-text "+seasonCSS.season_overview}>{season.overview}</p>
                             </div>
                         </div>
 

@@ -3,15 +3,20 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
 import sliderCSS from './Slider.module.css'
 import { Link } from "react-router-dom";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 
 export default function TeaterSlider() {
     const [apiLink, setApiLink] = useState('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1')
-
     const [movies, setMovies] = useState(null)
+    const [activeItem, setActiveItem] = useState('#popular')
+
+    // handle active class
+    const handleItemClick = (item, apiLink) => {
+        setActiveItem(item);
+        setApiLink(apiLink);
+    };
 
     async function getmovie() {
         try {
@@ -54,41 +59,50 @@ export default function TeaterSlider() {
     var settings = {
         infinite: true,
         slidesToShow: 4,
-        slidesToScroll: 3,
+        slidesToScroll: 4,
         autoplay: true,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
         speed: 9000,
         autoplaySpeed: 0,
-        cssEase: "linear"
+        cssEase: "linear",
+        responsive: [
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                }
+            }
+        ]
     };
 
 
 
-  
+
     useEffect(() => {
         getmovie()
         for (let index = 0; index < document.querySelectorAll('#rate').length; index++) {
-             if(document.querySelectorAll('#rate')[index].innerHTML > 8){
+            if (document.querySelectorAll('#rate')[index].innerHTML > 8) {
                 document.querySelectorAll('#rateArea')[index].classList.add(sliderCSS.green_light)
-                
-             }else if(document.querySelectorAll('#rate')[index].innerHTML >= 6 || document.querySelectorAll('#rate')[index].innerHTML < 8){
+
+            } else if (document.querySelectorAll('#rate')[index].innerHTML >= 6 || document.querySelectorAll('#rate')[index].innerHTML < 8) {
                 document.querySelectorAll('#rateArea')[index].classList.add(sliderCSS.yellow)
-                
 
-            }else if(document.querySelectorAll('#rate')[index].innerHTML>=3 || document.querySelectorAll('#rate')[index].innerHTML < 6){
+
+            } else if (document.querySelectorAll('#rate')[index].innerHTML >= 3 || document.querySelectorAll('#rate')[index].innerHTML < 6) {
                 document.querySelectorAll('#rateArea')[index].classList.add(sliderCSS.orange)
-                
 
-            }else if(document.querySelectorAll('#rate')[index].innerHTML>=1 || document.querySelectorAll('#rate')[index].innerHTML < 3){
+
+            } else if (document.querySelectorAll('#rate')[index].innerHTML >= 1 || document.querySelectorAll('#rate')[index].innerHTML < 3) {
                 document.querySelectorAll('#rateArea')[index].classList.add(sliderCSS.gray)
-                
-            }else{
-                document.querySelectorAll('#rateArea')[index].classList.add(sliderCSS.red)    
+
+            } else {
+                document.querySelectorAll('#rateArea')[index].classList.add(sliderCSS.red)
             }
-             
+
         }
-    },  [movies])
+    }, [movies])
 
     return <>
         <div className="special_title">
@@ -96,20 +110,20 @@ export default function TeaterSlider() {
         </div>
 
         <ul className={'list-unstyled p-0 d-flex ' + sliderCSS.teater_list}>
-            <li onClick={() => { setApiLink('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1') }}>#popular</li>
-            <li onClick={() => { setApiLink('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1') }}>#coming soon</li>
-            <li onClick={() => { setApiLink('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1') }}>#top rated</li>
-            <li onClick={() => { setApiLink('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1') }}>#most reviewed</li>
+            <li className={activeItem === '#popular' ? sliderCSS.active : ''} onClick={() => { handleItemClick('#popular', 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1') }}>#popular</li>
+            <li className={activeItem === '#coming soon' ? sliderCSS.active : ''} onClick={() => { handleItemClick('#coming soon', 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1') }}>#coming soon</li>
+            <li className={activeItem === '#top rated' ? sliderCSS.active : ''} onClick={() => { handleItemClick('#top rated', 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1') }}>#top rated</li>
+            <li className={activeItem === '#most reviewed' ? sliderCSS.active : ''} onClick={() => { handleItemClick('#most reviewed', 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1') }}>#most reviewed</li>
         </ul>
         <div className="">
             <Slider {...settings} className="row justify-content-center">
 
                 {movies?.map((movie, index) => {
-                    return <div key={index} class="col-md-3 px-3 " >
+                    return <div key={index} class="col-md-3 px-1 " >
                         <div className={"position-relative overflow-hidden " + sliderCSS.slide}>
 
                             <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path} `} alt={movie.title} />
-                            <div id="rateArea"  className={sliderCSS.overLay}>
+                            <div id="rateArea" className={sliderCSS.overLay}>
                                 <p className="m-0">
                                     <i class="fa-solid fa-star"></i>
                                     <span id="rate"> {movie.vote_average.toString().length > 1 ? movie.vote_average.toString().slice(0, 3) : movie.vote_average + .0}</span>

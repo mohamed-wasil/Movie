@@ -17,7 +17,7 @@ export default function MoviesDetails() {
       }
     })
   }
-  const movieInfo = useQuery("getMovieDetails", getMovieDetails ,{
+  const movieInfo = useQuery("getMovieDetails", getMovieDetails, {
     refetchInterval: 500, // refetch every half second
   });
 
@@ -39,7 +39,7 @@ export default function MoviesDetails() {
       }
     })
   }
-  const relatedMovies = useQuery("getRelatedMovies", getRelatedMovies );
+  const relatedMovies = useQuery("getRelatedMovies", getRelatedMovies);
 
   async function getRecomedationMovies() {
     return await axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?language=en-US`, {
@@ -50,11 +50,11 @@ export default function MoviesDetails() {
     })
   }
   const recomendatinMovies = useQuery("getRecomedationMovies", getRecomedationMovies)
- 
-// handle loading
-if (movieInfo.isLoading || castInfo.isLoading || relatedMovies.isLoading ||recomendatinMovies.isLoading) {
-  return <LoadingScreen />
-}
+
+  // handle loading
+  if (movieInfo.isLoading || castInfo.isLoading || relatedMovies.isLoading || recomendatinMovies.isLoading) {
+    return <LoadingScreen />
+  }
 
 
   function SampleNextArrow(props) {
@@ -82,7 +82,7 @@ if (movieInfo.isLoading || castInfo.isLoading || relatedMovies.isLoading ||recom
   var settings = {
     infinite: true,
     slidesToShow: 6,
-    slidesToScroll: 3,
+    slidesToScroll: 6,
     autoplay: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -90,6 +90,33 @@ if (movieInfo.isLoading || castInfo.isLoading || relatedMovies.isLoading ||recom
     autoplaySpeed: 0,
     cssEase: "linear",
     lazyLoad: true,
+    responsive: [
+
+      {
+        breakpoint: 830,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 750,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          initialSlide: 2
+        }
+      }
+    ]
 
 
     // dots: true,
@@ -106,20 +133,20 @@ if (movieInfo.isLoading || castInfo.isLoading || relatedMovies.isLoading ||recom
       <div className={movieDetailsCSS.main_div}>
         <div className="container">
           <div className="row">
-            <div className="col-md-4 col-sm-12 col-xs-12">
+            <div className="col-lg-4 col-md-5 col-sm-12 ">
               <div className={movieDetailsCSS.image}>
                 <img src={`https://image.tmdb.org/t/p/w500/${movieInfo.data?.data.poster_path}`} alt={movieInfo.data?.data.original_title} />
               </div>
             </div>
-            <div className="col-md-8 col-sm-12 col-xs-12">
+            <div className="col-lg-8 col-md-7 col-sm-12 ">
               <div className={movieDetailsCSS.content}>
-                <h1>{movieInfo.data?.data.original_title}</h1>
+                <h1>{movieInfo.data?.data.original_title} <span className='opacity-75'>({movieInfo.data?.data.release_date?.slice(0, 4)})</span></h1>
                 <div className={movieDetailsCSS.genres_box}>
                   {movieInfo.data?.data.genres.map((gen, ind) => { return <span key={ind} className={movieDetailsCSS.genres}>{gen.name}</span> })}
                 </div>
                 <p><span>over View : <br /></span>{movieInfo.data?.data.overview}</p>
                 <ul>
-                  <li><strong>Release Date:</strong> {new Date(movieInfo.data?.data.release_date).toLocaleDateString()}</li>
+                  {/* <li><strong>Release Date:</strong> {new Date(movieInfo.data?.data.release_date).toLocaleDateString()}</li> */}
                   <li><strong>Vote Average:</strong> {movieInfo.data?.data.vote_average}</li>
                   <li><strong>Popularity:</strong> {movieInfo.data?.data.popularity}</li>
                 </ul>
@@ -137,12 +164,12 @@ if (movieInfo.isLoading || castInfo.isLoading || relatedMovies.isLoading ||recom
         <div className="special_title">
           <h2>Series Cast</h2>
         </div>
-        <div className="row">
+        <div className="row gy-lg-0 gy-3">
           {castInfo.data?.data?.cast.slice(0, 6).map((cast, ind) => {
-            return <div key={ind} className="col-md-2">
+            return <div key={ind} className="col-lg-2 col-md-3 col-sm-4 col-6 px-1">
               <div className={movieDetailsCSS.cast_item}>
                 <div className={movieDetailsCSS.cast_img}>
-                  <img src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`} alt={cast.name} />
+                  <Link to={`/cast/${cast.id}`}> <img src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`} alt={cast.name} /></Link>
                 </div>
                 <div className={movieDetailsCSS.cast_info}>
                   <h3><Link to={`/cast/${cast.id}`}>{cast.name}</Link></h3>
@@ -170,7 +197,7 @@ if (movieInfo.isLoading || castInfo.isLoading || relatedMovies.isLoading ||recom
           <Slider {...settings} className="row justify-content-center">
 
             {relatedMovies.data?.data.results?.map((movie, index) => {
-              return <div key={index} class="col-md-3 px-3 " >
+              return <div key={index} class="col-md-3 col-4 px-1 " >
                 <div className={"position-relative overflow-hidden " + movieDetailsCSS.slide}>
 
                   <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path} `} alt={movie.title} />
@@ -195,7 +222,7 @@ if (movieInfo.isLoading || castInfo.isLoading || relatedMovies.isLoading ||recom
       </div>
     </section>
     {/*  */}
-    <section className={movieDetailsCSS.related_movies + " "+ movieDetailsCSS.recomendation}>
+    <section className={movieDetailsCSS.related_movies + " " + movieDetailsCSS.recomendation}>
       <div className="container">
         <div className="special_title">
           <h2>Recommendations
@@ -206,7 +233,7 @@ if (movieInfo.isLoading || castInfo.isLoading || relatedMovies.isLoading ||recom
           <Slider {...settings} className="row justify-content-center">
 
             {recomendatinMovies.data?.data.results?.map((movie, index) => {
-              return <div key={index} class="col-md-3 px-3 " >
+              return <div key={index} class="col-md-3 col-4 px-1 " >
                 <div className={"position-relative overflow-hidden " + movieDetailsCSS.slide}>
 
                   <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path} `} alt={movie.title} />

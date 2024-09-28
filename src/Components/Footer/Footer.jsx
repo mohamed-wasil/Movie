@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className={footerCSS.footer}>
       <div className="container">
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-lg-3 col-md-6 col-12 ">
             <div className={footerCSS.logo_ft}>
               <img src={require('../../Images/logo1.png')} alt="logo" />
             </div>
@@ -17,7 +17,7 @@ export default function Footer() {
             </p>
             <p>Call us: <span>(+01) 202 342 6789</span></p>
           </div>
-          <div className="col-md-2">
+          <div className="col-lg-2 col-md-6 col-12">
 
             <h4>Resources</h4>
 
@@ -29,7 +29,7 @@ export default function Footer() {
               <li><Link to="/">Blogs</Link></li>
             </ul>
           </div>
-          <div className="col-md-2">
+          <div className="col-lg-2 col-md-6 col-12">
 
             <h4>Legal</h4>
 
@@ -40,7 +40,7 @@ export default function Footer() {
             </ul>
 
           </div>
-          <div className="col-md-2">
+          <div className="col-lg-2 col-md-6 col-12">
 
             <h4>Account</h4>
 
@@ -53,7 +53,7 @@ export default function Footer() {
             </ul>
 
           </div>
-          <div className="col-md-2">
+          <div className="col-lg-3 col-md-6 col-12 ">
 
             <h4>NewsLetter</h4>
 

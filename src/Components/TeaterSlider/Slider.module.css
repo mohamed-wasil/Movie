@@ -10,19 +10,23 @@
 }
 
 
-.yellow{
+.yellow {
     background-color: #f5b50a;
 }
+
 .orange {
     background: #ec5a1a;
 }
-.green_light{
+
+.green_light {
     background-color: #a6bb16;
 }
-.gray{
+
+.gray {
     background-color: #7EACB5;
 }
-.red{
+
+.red {
     background-color: #ff0000;
 }
 
@@ -72,8 +76,9 @@
     font-size: 14px;
     color: #abb7c4;
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: #ffffff;
+    margin-top: 0;
 }
 
 .slide:hover .overLay h4 {
@@ -89,13 +94,58 @@
     margin-right: 20px;
     font-size: 16px;
     color: #abb7c4;
-    font-weight: bold;
-    text-transform: uppercase;
+    text-transform: capitalize;
     transition: all .5s;
     cursor: pointer;
 
 }
-
+.active{
+    color: #dcf836 !important;
+}
 .teater_list li:hover {
     color: #dcf836;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .overLay {
+        top: 7px;
+        right: -25px;
+        padding: 0 30px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .overLay {
+        top: 7px;
+        right: -25px;
+        padding: 0 30px;
+        font-size: 11px;
+    }
+
+    .teater_list {
+        margin-bottom: 20px;
+    }
+
+    .teater_list li {
+        margin-right: 10px;
+        font-size: 14px;
+    }
+    .slide .overLayBtn .btn {
+        padding: 0px 12px;
+        width: 90px;
+        height: 28px;
+    }
+    .slide .overLayBtn .btn a {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    .teater_list li {
+        margin-right: 8x;
+        font-size: 14px;
+   
+    }
 }

@@ -14,19 +14,15 @@ export default function Home() {
     <section className={homeCSS.teater}>
       <div className="container ">
         <div className="row">
-          <div className="col-md-8">
+          <div className=" col-lg-8 ">
             <TeaterSlider />
-
-            {/* -------------------------------------- */}
-           
-            <div className="mt-5">
-
+            <div className="mt-md-5 mt-3">
              <TvSlider />
             </div>
 
           </div>
-          <div className="col-md-4">
-            <div className="ps-md-5">
+          <div className=" col-lg-4 ">
+            <div className="ps-lg-5 mt-lg-0 mt-5">
               <div className={homeCSS.sb_title}>
                 <h2>Spotlight Celebrities</h2>
               </div>

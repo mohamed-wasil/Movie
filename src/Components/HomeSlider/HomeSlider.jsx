@@ -59,7 +59,25 @@ export default function HomeSlider() {
         prevArrow: <SamplePrevArrow />,
         speed: 9000,
         autoplaySpeed: 0,
-        cssEase: "linear"
+        cssEase: "linear",
+        responsive: [
+           
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                initialSlide: 2
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+              }
+            }
+          ]
     };
 
     // console.log( topRatedMovies.data?.data.results[5].vote_average.toString().length );
@@ -71,7 +89,7 @@ export default function HomeSlider() {
             <Slider {...settings} className="row justify-content-center">
 
                 {topRatedMovies.data?.data.results.map((movie, index) => {
-                    return <div key={index} class="col-md-3 px-3 " >
+                    return <div key={index} class="col-md-3 px-2 " >
                         <div className={"position-relative overflow-hidden " + homeSlideCSS.slide}>
 
                             <Link to={`/moviesDetails/${movie.id}`}><img src={`https://image.tmdb.org/t/p/original/${movie.poster_path} `} alt={movie.title} /></Link>

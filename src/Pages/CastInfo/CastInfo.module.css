@@ -1,15 +1,13 @@
-.cast{
-    padding: 180px 0 0px;
+.cast {
+    padding: 180px 0 25px;
     background: url('../../Images/hero-bg.jpg');
-
     background-position: center;
     background-size: cover;
-
     position: relative;
     color: #fff;
-
 }
-.cast:after{
+
+.cast:after {
     position: absolute;
     content: '';
     width: 100%;
@@ -20,7 +18,8 @@
     bottom: 0;
     z-index: 1;
 }
-.cast .cast_image img{
+
+.cast .cast_image img {
     display: block;
     min-width: 300px;
     width: 300px;
@@ -31,44 +30,56 @@
     border-radius: 8px;
     overflow: hidden;
 }
-.cast .cast_info h2{
-    font-size: 2.2rem; 
+
+.cast .cast_info h2 {
+    font-size: 2.2rem;
     margin-bottom: 30px;
     text-transform: capitalize;
 }
-.cast .cast_info h3{
+
+.cast .cast_info h3 {
     font-size: 20px;
     margin-bottom: 20px;
     font-weight: 500;
     line-height: 1.5;
     text-transform: none;
+    color: #dcf836;
 }
-.cast .cast_info p{
+
+.cast .cast_info p {
     padding-bottom: 20px;
     line-height: 18px;
     letter-spacing: 1px;
     position: relative;
     color: #Abb7C4;
 }
-.cast .cast_info p span{
+
+.cast .cast_info p span {
     display: block;
-    margin-bottom: 30px;
+    margin-bottom: 14px;
 }
-.personal{
+
+.cast .cast_info .handleText {
+    color: rgb(97, 198, 202);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.personal {
     padding: 120px 0 100px;
     background: #06121e;
     color: #Abb7C4;
-
-
 }
-.personal .text{
+
+.personal .text {
     margin: 0 0 20px;
-    font-size: 15px ;
+    font-size: 15px;
 }
-.personal .text strong{
+
+.personal .text strong {
     display: block;
     font-weight: 600;
-    font-size: 18px ;
+    font-size: 18px;
 }
 
 
@@ -106,7 +117,6 @@
     opacity: 0;
     transition: all .3s;
     border-radius: 20px;
-
 }
 
 .slide .overLayBtn .btn {
@@ -124,9 +134,9 @@
     border-radius: 30px;
     cursor: pointer;
     /* opacity: 0; */
-
 }
-.slide img{
+
+.slide img {
     border-radius: 20px;
 }
 
@@ -145,21 +155,25 @@
 .slide:hover .overLay h4 {
     transition: all .5s;
 }
+
 .cast_movies .char {
- padding: 15px 0;
-  font-size: 15px;
+    padding: 15px 0;
+    font-size: 15px;
 }
-.cast_movies .char h5 a{
+
+.cast_movies .char h5 a {
     font-size: 16px;
     color: #ec5a1a;
     text-decoration: none;
     transition: all .5s;
 }
-.cast_movies .char h5 a:hover{
+
+.cast_movies .char h5 a:hover {
     color: #fff;
     text-decoration: underline;
 }
-.cast_movies .char p{
+
+.cast_movies .char p {
     font-size: 14px;
     color: #abb7c4;
     line-height: 1.5;
@@ -178,10 +192,8 @@
     text-transform: uppercase;
     transition: all .5s;
     cursor: pointer;
-
 }
 
 .teater_list li:hover {
     color: #dcf836;
 }
-

@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap');
-
+html{
+    overflow-x: hidden;
+}
 body {
     font-family: "Sansita", sans-serif;
+
 }
 
 img {
@@ -28,7 +31,7 @@ a {
     font-size: 18px;
     color: #ffffff;
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin-bottom: 25px;
 
 }
@@ -38,3 +41,13 @@ a {
 }
 
 /* Not Found Page  */
+.modal-backdrop.show{
+    display: none;
+}
+
+@media only screen and (max-width: 540px) {
+    .special_title {
+        margin-bottom: 15px;
+    }
+    
+}

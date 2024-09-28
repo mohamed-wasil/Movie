@@ -73,7 +73,7 @@ export default function TvRecomendation() {
       </div>
       <div className="row gy-3">
         {movies.data?.data.results?.map((movie, index) => {
-          return <div key={index} class="col-md-2 px-3 " >
+          return <div key={index} class="col-lg-2 col-md-3 col-4 px-sm-2 px-1" >
             <div className={"position-relative overflow-hidden " + movieCSS.slide}>
               <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path} `} alt={movie.title} />
               <div className={movieCSS.overLayBtn}>

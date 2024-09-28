@@ -50,9 +50,9 @@ export default function People() {
                 <div className="special_title d-flex justify-content-between">
                     <h2>Popular Movies </h2>
                 </div>
-                <div className="row gy-4">
+                <div className="row  gy-4">
                     {popularPeople.data?.data.results.map((person, index) => {
-                        return <div key={index} class="col-md-3 px-3 " >
+                        return <div key={index} class="col-lg-2 col-md-3 col-sm-4 col-6 px-1 " >
                             <div className={"position-relative overflow-hidden " + peopleCSS.slide}>
                                 <Link to={`/cast/${person.id}`}>
                                     {person.profile_path ? <img src={`https://image.tmdb.org/t/p/original/${person.profile_path} `} alt={person.name} /> : <>
