@@ -14,6 +14,8 @@ export default function TvSlider() {
     // handle active class
     const handleItemClick = (item, apiLink) => {
         setActiveItem(item);
+        setApiLink(apiLink);
+
     };
 
     async function getmovie() {
