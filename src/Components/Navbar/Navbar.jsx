@@ -23,23 +23,6 @@ function handleSearchlistActive(item){
   const [activeItem, setActiveItem] = useState(localStorage.getItem('pathName' ? localStorage.getItem('pathName') :'home'))
   
 
-  // handle active class
-  // function handleItemClick (item)  {
-  //   // if (pathname === "/home" || pathname === "/ ") {
-  //   //   setActiveItem('home')
-  //   // } else if (pathname === "/movie") {
-  //   //   setActiveItem('movie')
-  //   // } else if (pathname === "/tv") {
-  //   //   setActiveItem('tv')
-  //   // } else if (pathname === "/people") {
-  //   //   setActiveItem('people')
-  //   // }
-  //   // else{
-  //   //   setActiveItem(item);
-  //   // }
-  //   setActiveItem(item);
-  //   localStorage.setItem("pathNmame" , activeItem)
-  // };
 
 
   const { searchResults, setSearchResults, searchType, setSearchType, setSearchWords } = useContext(searchContext)
@@ -190,7 +173,7 @@ function handleSearchlistActive(item){
     <div  className={navbarCSS.nav_section}>
       <nav id='header' className={"navbar navbar-expand-lg  " + navbarCSS.nav}>
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <Link className={"navbar-brand "+navbarCSS.logo} to="/">
             <img src={Logo} alt="Logo" />
           </Link>
           <button className={"navbar-toggler bg-black "+ navbarCSS.bar} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

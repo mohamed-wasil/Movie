@@ -120,14 +120,6 @@ export default function MoviesDetails() {
         }
       }
     ]
-
-
-    // dots: true,
-    // infinite: true,
-    // speed: 500,
-    // slidesToShow: 6,
-    // slidesToScroll: 1,
-    // initialSlide: 2
   };
 
   return <>
@@ -190,7 +182,9 @@ export default function MoviesDetails() {
             </div>
           })}
         </div>
-
+        <div className="text-end">
+          <Link title='All Casts & Crew' className={movieDetailsCSS.all_cast} to={`/castandcrew/${movieInfo.data?.data.id}`}>All Casts & Crew <i class="fa-solid fa-arrow-right"></i></Link>
+        </div>
       </div>
     </section>
 

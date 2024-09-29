@@ -122,6 +122,8 @@ export default function TvDetails() {
     ]
 
   };
+  // console.log(movieInfo.data?.data.id);
+  
 
   const lastSeason = movieInfo.data?.data.seasons?.[movieInfo.data.data.seasons.length - 1];
 
@@ -183,6 +185,9 @@ export default function TvDetails() {
           })}
         </div>
 
+      <div className="text-end">
+          <Link title='All Casts & Crew' className={tvDetailsCSS.all_cast} to={`/cast/${movieInfo.data?.data.id}/${movieInfo.data?.data.id}`}>All Casts & Crew <i class="fa-solid fa-arrow-right"></i></Link>
+        </div>
       </div>
     </section>
     {/* */}
